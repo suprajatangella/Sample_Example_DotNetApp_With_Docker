@@ -1,0 +1,27 @@
+﻿version: "3.9"
+services:
+  database:
+    image: "mcr.microsoft.com/mssql/server:latest"
+    container_name: sqlserver 
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Password_123
+      - MSSQL_PID = Express
+    restart: always
+    ports:
+      - "1433:1433"
+  web_app:
+    build: 
+      dockerfile: Dockerfile
+      context: .
+    container_name: frontendappwithdocker
+    ports:
+      - "5000:5000"
+      - "5001:5001"
+        # ports:
+        #     - "5000:5000"
+        #     - "5001:5001"
+    volumes:
+       -"./FrontEndAppWithDocker/src:/app/src"
+    depends_on:
+      - database

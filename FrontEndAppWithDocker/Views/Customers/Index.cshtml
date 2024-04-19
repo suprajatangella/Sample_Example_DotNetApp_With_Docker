@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Customer>;
+
+<div class="card shadow border-0 my-4">
+    <div class="card-header bg-secondary bg-gradient ml-0 py-3">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="text-white py-2">Customers List</h2>
+            </div>
+        </div>
+    </div>
+    <div class="card-body p-4">
+<table id="tblData" class="table table-bordered table-striped" style="width:100%">
+    <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>VAT</th>
+        <th>Enabled</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.VAT</td>
+            <td>@item.Enabled</td>
+        </tr>
+    }
+</table>
+</div>
+</div>
+
